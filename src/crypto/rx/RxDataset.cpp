@@ -197,6 +197,7 @@ void xmrig::RxDataset::setRaw(const void *raw)
 
 void xmrig::RxDataset::allocate(bool hugePages, bool oneGbPages)
 {
+    LOG_VERBOSE(YELLOW("[src.crypto.rx.RxDataset.allocate] Allocating mem based on current mode: %s"), m_mode)
     if (m_mode == RxConfig::LightMode) {
         LOG_ERR(CLEAR "%s" RED_BOLD_S "fast RandomX mode disabled by config", Tags::randomx());
 
@@ -209,6 +210,7 @@ void xmrig::RxDataset::allocate(bool hugePages, bool oneGbPages)
         return;
     }
 
+    LOG_VERBOSE(YELLOW("[src.crypto.rx.RxDataset.allocate] Mem check passed. Creating new vmem")
     m_memory  = new VirtualMemory(maxSize(), hugePages, oneGbPages, false, m_node);
 
     if (m_memory->isOneGbPages()) {
