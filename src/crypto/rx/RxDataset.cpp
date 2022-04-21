@@ -210,7 +210,7 @@ void xmrig::RxDataset::allocate(bool hugePages, bool oneGbPages)
         return;
     }
 
-    LOG_VERBOSE(YELLOW("[src.crypto.rx.RxDataset.allocate] Mem check passed. Creating new vmem");
+    LOG_VERBOSE(YELLOW("[src.crypto.rx.RxDataset.allocate] Mem check passed. Creating new vmem"));
     m_memory  = new VirtualMemory(maxSize(), hugePages, oneGbPages, false, m_node);
 
     if (m_memory->isOneGbPages()) {
